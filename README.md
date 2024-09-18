@@ -1,1 +1,2 @@
-# AIvsReal
+# AIvsRealBot
+At the heart of this project lies a dataset from Kaggle, supplemented with new images manually, which has been further enhanced through data augmentation. I  utilized a pre-trained neural network MobileNetV2 enriched with additional global average pooling and binary classification layers to achieve maximum accuracy in image recognition. This bot is your reliable assistant in the world of art and technology, helping you uncover the secrets of visual content!
