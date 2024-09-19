@@ -53,15 +53,15 @@ async def photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Await the coroutine to get the file object
     photo_file = await update.message.photo[-1].get_file()
     # Await the download
-    await photo_file.download_to_drive(f'{user.first_name}_photo.jpg')
-    logger.info("Фотография %s: %s", user.first_name,
-                f'{user.first_name}_photo.jpg')
+    await photo_file.download_to_drive(f'{user.id}_photo.jpg')
+    logger.info("Фотография %s: %s", user.id,
+                f'{user.id}_photo.jpg')
     await update.message.reply_text(
         'Great! Give me a moment to analyze your image...')
     with open("model.pkl", "rb") as dill_file:
         model = dill.load(dill_file)
         test_pred = model.predict(predict_generator(
-            [f'{user.first_name}_photo.jpg']), steps=len([f'{user.first_name}_photo.jpg']))
+            [f'{user.id}_photo.jpg']), steps=len([f'{user.id}_photo.jpg']))
         print(test_pred[0][0])
         if test_pred[0][0] > 0.5:
             result = "This image is real! Want to know more? Upload another image, and I will help you uncover its secrets again!"
